@@ -18,7 +18,6 @@ set $term foot
 # Your preferred application launcher
 set $menu wmenu-run
 
-font pango:"JetBrains Mono Regular" 12
 
 ### Output configuration
 #
