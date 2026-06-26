@@ -114,19 +114,16 @@ fi
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
 
-PROMPT_DIRTRIM=2
-
-# Clean function returning only the raw colored string components
+# Updated function using literal non-printing wrappers (\001 and \002)
 __exit_status_prompt() {
     local EXIT="$?"
     if [ "$EXIT" -eq 0 ]; then
-        # Green arrow
-        printf "╰─\e[1;32m❯\e[0m "
+        # \001 is equivalent to \[, \002 is equivalent to \]
+        printf "╰─\001\e[1;32m\002❯\001\e[0m\002 "
     else
-        # Red arrow and exit code
-        printf "╰─\e[1;31m[Err: %s] ❯\e[0m " "$EXIT"
+        printf "╰─\001\e[1;31m\002[Err: %s] ❯\001\e[0m\002 " "$EXIT"
     fi
 }
 
-# The \[ and \] wraps are placed directly here around the execution string
-PS1="\n\[\e[1;34m\]╭─ \u@\h \[\e[1;35m\]\w\[\e[0m\]\n\[\$(__exit_status_prompt)\]"
+# The PS1 definition remains clean
+PS1="\n\[\e[1;34m\]╭─ \u@\h \[\e[1;35m\]\w\[\e[0m\]\n\$(__exit_status_prompt)"
