@@ -1,11 +1,77 @@
-# Instantly prepare your arch distro for a OOBE experience
+# GNOME-DEBIAN SETUP
+---
+## Setup Instructions:
 
-## Clone repo link:
-`git clone https://github.com/operation123octopus-boop/Sway-debian-ConfigFiles/`
+### Basic Essentials:
+1. get the $USER to sudo
+   ```bash
+   su - #provide password
+   usermod -aG sudo "$USER"
 
-## Running:
+   exit #exit sudo
+   sudo systemctl reboot
+   
+   ```
 
-You have to just run the install.sh file manually, and you are done!!
-```bash
-chmod +x ./install.sh
-```
+2. Install homebrew
+   ```bash
+    sudo apt install build-essential procps curl file git -y
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  
+   ```
+   then follow instructions as provided by homebrew
+
+   3. Install flatpak:
+   ```bash
+    sudo apt install flatpak
+    sudo apt install gnome-software-plugin-flatpak
+    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+    sudo systemctl reboot
+   ```
+### Applications:
+1. Installing libreoffice using flatpak:
+   ```bash
+   #removing preinstalled libreoffice
+   sudo apt purge "libreoffice*"
+   sudo apt autoremove --purge
+   rm -rf ~/.config/libreoffice
+   rm -rf ~/.local/share/recently-used.xbel
+   sudo apt clean
+
+   #installing libreoffice from flatpak
+   flatpak install flathub org.libreoffice.LibreOffice
+
+   ```
+2. Installing helix:
+   ```bash
+     brew install helix
+   ```
+3. {OPTIONAL} Install LSP (C and Python3):
+   Note: You may need to install *build-essentials* package with the *--no-install-recommends* flag for C.
+   ```bash
+   sudo apt install clangd --no-install-recommends
+   brew install basedpyright ruff
+   ```
+   Note: paste the lanuages.toml in *~/.config/helix/* and then run:
+   ```bash
+   hx --health c #check the C programming health
+   hx --heath python #check python heatlh
+   ```
+4. {OPTIONAL} Install GNU Debugger:
+   Note: Install if require
+   ```bash
+   sudo apt install gdb --no-install-recommends
+   ```
+
+### Final:
+1. Change to Large Text in Accessibility menu
+2. Do a reboot
+3. **DO NOT INSTALL USELESS THINGS**
+
+---
+# NOW ITS DONE!!!
+---
+
+   
+   
