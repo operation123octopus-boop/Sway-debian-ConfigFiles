@@ -112,7 +112,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
 
 # Updated function using literal non-printing wrappers (\001 and \002)
 __exit_status_prompt() {
