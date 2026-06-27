@@ -13,13 +13,11 @@
    
    ```
 
-2. Install homebrew
+2. Install uv
    ```bash
-    sudo apt install build-essential procps curl file git -y
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+
    ```
-   then follow instructions as provided by homebrew
 
 3. Install flatpak:
    ```bash
@@ -45,22 +43,22 @@
    ```
 2. Installing helix:
    ```bash
-     brew install helix
+     sudo apt install hx --no-install-recommends
    ```
 3. {OPTIONAL} Install LSP (C and Python3):
    
-   <font color:red>Note: You may need to install *build-essentials* package with the *--no-install-recommends* flag for C.</font>
+   Note: You may need to install *build-essentials* package with the *--no-install-recommends* flag for C.
    ```bash
    sudo apt install clangd --no-install-recommends
-   brew install basedpyright ruff
+   uv tool install basedpyright ruff
    ```
-   Note: paste the lanuages.toml in *~/.config/helix/* and then run:
+   Note: paste the *config.toml* and *lanuages.toml* in *~/.config/helix/* and then run:
    ```bash
    hx --health c #check the C programming health
    hx --heath python #check python heatlh
    ```
 5. {OPTIONAL} Install GNU Debugger:
-   <font color:red>Note: Install if require</font>
+   Note: Install if require
    ```bash
    sudo apt install gdb --no-install-recommends
    ```
