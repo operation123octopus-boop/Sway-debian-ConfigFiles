@@ -18,8 +18,12 @@
    curl -LsSf https://astral.sh/uv/install.sh | sh
 
    ```
+3. Install nodejs, npm, git
+   ```bash
+        sudo apt install git nodejs npm --no-install-recommends
+    ```
 
-3. Install flatpak:
+4. {**OPTIONAL**}Install flatpak:
    ```bash
     sudo apt install flatpak
     sudo apt install gnome-software-plugin-flatpak
@@ -28,7 +32,7 @@
     sudo systemctl reboot
    ```
 ### Applications:
-1. Installing libreoffice using flatpak:
+1. {**OPTIONAL**}Installing libreoffice using flatpak:
    ```bash
    #removing preinstalled libreoffice
    sudo apt purge "libreoffice*"
@@ -41,32 +45,34 @@
    flatpak install flathub org.libreoffice.LibreOffice
 
    ```
-2. Installing helix:
+2. Installing vim:
    ```bash
-     sudo apt install hx --no-install-recommends
+     sudo apt install vim --no-install-recommends
    ```
-3. {OPTIONAL} Install LSP (C and Python3):
+3. {**OPTIONAL**} Install LSP (C):
    
    Note: You may need to install *build-essentials* package with the *--no-install-recommends* flag for C.
    ```bash
    sudo apt install clangd --no-install-recommends
-   uv tool install basedpyright ruff
    ```
-   Note: paste the *config.toml* and *lanuages.toml* in *~/.config/helix/* and then run:
-   ```bash
-   hx --health c #check the C programming health
-   hx --heath python #check python heatlh
-   ```
-5. {OPTIONAL} Install GNU Debugger:
+4. {**OPTIONAL**} Install GNU Debugger:
    Note: Install if require
    ```bash
    sudo apt install gdb --no-install-recommends
    ```
+### Configuring vim:
+1. Copy the ***.vimrc*** to ***~/*** directory
+2. Download vim-plug by using:
+   ```bash
+   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+   ```
+3. Type ***PlugInstall*** in command mode of vim
+4. **BOOM** done 😁😁
 
 ### Final:
-1. Change to Large Text in Accessibility menu
-2. Do a reboot
-3. **DO NOT INSTALL USELESS THINGS**
+1. Do a reboot
+2. **DO NOT INSTALL USELESS THINGS**
 
 ---
 # NOW ITS DONE!!!
